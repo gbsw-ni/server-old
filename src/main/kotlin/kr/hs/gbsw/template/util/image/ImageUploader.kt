@@ -27,7 +27,7 @@ class ImageUploader {
     }
 
     private fun createImageName(fileName: String): String {
-        val dateFormat: SimpleDateFormat = SimpleDateFormat("yyyyMMddHHmmss")
+        val dateFormat = SimpleDateFormat("yyyyMMddHHmmss")
         return dateFormat.format(Date()) + '_' + fileName
     }
 }
