@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ni-deployment
+  namespace: ni
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ni
+  template:
+    metadata:
+      labels:
+        app: ni
+    spec:
+      nodeSelector:
+        nodeType: ni
+      containers:
+      - name: app
+        image: <image>:latest
+        ports:
+        - containerPort: 8080

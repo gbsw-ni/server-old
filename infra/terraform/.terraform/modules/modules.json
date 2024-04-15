@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"natgw","Source":"./modules/vpc/nat","Dir":""},{"Key":"route_table","Source":"./modules/vpc/rtb","Dir":""},{"Key":"route_table_association","Source":"./modules/vpc/rta","Dir":""},{"Key":"subnet","Source":"./modules/vpc/subnet","Dir":""},{"Key":"vpc","Source":"./modules/vpc/vpc","Dir":""}]}

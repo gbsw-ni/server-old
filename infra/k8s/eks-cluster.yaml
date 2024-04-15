@@ -1,0 +1,47 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ni-eks-cluster
+  region: ap-northeast-2
+
+vpc:
+  subnets:
+    private:
+      ap-northeast-2a: { id: <private_subnet_id> }
+      ap-northeast-2b: { id: <private_subnet_id> }
+
+# EC2 NodeGroup
+managedNodeGroups:
+  - name: ni-nodegroup-app
+    label[s: { nodeType: ni }
+    instanceType: t3.small
+    instanceName: i-ni-server
+    # amiFamily: Bottlerocket  # using Bottlerocket EKS AMI
+    minSize: 2
+    maxSize: 16
+    desiredCapacity: 2
+    volumeSize: 8
+    privateNetworking: true
+    iam:
+      withAddonPolicies:
+        imageBuilder: true
+        autoScaler: true
+        certManager: true
+        awsLoadBalancerController: true
+        cloudWatch: true
+
+# Fargate Profile
+fargateProfiles:
+  - name: ni-fargate-profile
+    selectors:
+      - namespace: ni
+        labels:
+          env: fargate
+
+iam:
+  withOIDC: true
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]
