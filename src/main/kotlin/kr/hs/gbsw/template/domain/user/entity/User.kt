@@ -2,14 +2,12 @@ package codes.dya.drive.domain.user.entity
 
 import jakarta.persistence.*
 import kr.hs.gbsw.template.domain.user.dto.UserDto
-import lombok.NoArgsConstructor
 
 @Entity
-@NoArgsConstructor
 data class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long,
+        val id: Long? = null,
 
         @Column(unique = true)
         var email: String,

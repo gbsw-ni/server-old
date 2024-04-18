@@ -17,7 +17,7 @@ class UserDto {
     )
 
     data class Response(
-            var id: Long,
+            var id: Long?,
             var email: String,
             var name: String,
             var image: String
