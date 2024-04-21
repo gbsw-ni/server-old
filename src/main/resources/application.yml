@@ -2,8 +2,8 @@ spring:
     datasource:
         driver-class-name: org.mariadb.jdbc.Driver
         url: jdbc:mariadb://localhost:3306/spring
-        username: admin
-        password: password
+        username: root
+        password: 8049
     servlet:
         multipart:
             max-file-size: 10GB

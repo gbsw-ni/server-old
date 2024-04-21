@@ -1,9 +1,7 @@
 package kr.hs.gbsw.template.domain.mission.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import codes.dya.drive.domain.user.entity.User
+import jakarta.persistence.*
 import kr.hs.gbsw.template.domain.mission.dto.MissionDto
 
 @Entity
@@ -16,12 +14,17 @@ data class Mission(
     var name: String,
     var desc: String,
 
-    var rating: Int
+    var rating: Int,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    val user: User
+
 ) {
     constructor(missionDto: MissionDto.Create): this (
         id = missionDto.id,
         name = missionDto.name,
         desc = missionDto.desc,
-        rating = 100
+        rating = 100,
+        user = missionDto.user
     )
 }
